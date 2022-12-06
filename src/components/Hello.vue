@@ -1,30 +1,21 @@
 <template>
-  <h1 @click="$emit('please', 9)">
-    Please
-  </h1>
-  <h1 @click="$emit('click')">
-    click
-  </h1>
+  <h1>HELLO</h1>
+  <slot :hello="123"></slot>
+  <slot name="fuckyou">
+    Fuck You
+  </slot>
 </template>
 
 <script>
 export default {
 	props:{
-		message:{
+		updateMsg:{
 			type:String,
 			default:""
 		},
 	},
 	emits:{
 		click:null,
-		please: (number) => {
-			if(number > 10) {
-				return true
-			} else {
-				console.log("10보다 작음")
-				return false
-			}
-		}
 	}
 }
 </script>
