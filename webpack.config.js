@@ -1,7 +1,7 @@
-const path = require("path");
-const { VueLoaderPlugin } = require("vue-loader");
-const HtmlPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path")
+const { VueLoaderPlugin } = require("vue-loader")
+const HtmlPlugin = require("html-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
 
 module.exports = {
   resolve: {
@@ -36,4 +36,4 @@ module.exports = {
       patterns: [{ from: "static" }],
     }),
   ],
-};
+}
