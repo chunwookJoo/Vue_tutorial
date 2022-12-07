@@ -1,7 +1,9 @@
 import { createApp } from "vue"
 import App from "./App.vue"
-import World from "~/components/World"
+import fetchPlugin from "~/plugins/fetch"
 
 const app = createApp(App)
-app.component('World', World)
+app.use(fetchPlugin, {
+	pluginName:'$myApi'
+})
 app.mount("#app")
