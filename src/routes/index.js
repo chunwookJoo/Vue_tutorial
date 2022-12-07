@@ -1,35 +1,27 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import Home from "./Home"
 import About from "./About"
-import Docs from "./Docs"
-import DocsId from "./DocsId"
-import NotFound from "./NotFound"
+import LogIn from "./LogIn"
+
 
 export default createRouter({
-	history: createWebHashHistory(),
+	// history: createWebHashHistory(),
+	history: createWebHistory(),
 	routes: [
 		{
 			path: "/",
-			name:"home",
 			component: Home
 		},
 		{
 			path: "/about",
-			name:"about",
-			component: About
+			component: About,
+			meta:{
+				requiresAuth: true
+			}
 		},
 		{
-			path:"/documents",
-			component: Docs,
+			path:"/login",
+			component: LogIn,
 		},
-		{
-			path:"/documents/:id",
-			name:"docsId",
-			component: DocsId
-		},
-		{
-			path: "/:notFound(.*)",
-			component: NotFound
-		}
 	]
 })

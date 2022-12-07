@@ -1,20 +1,31 @@
 <template>
 	<RouterLink to="/">Home</RouterLink>
 	<RouterLink to="/about">About</RouterLink>
-	<RouterLink :to="{
-		name:'docsId',
-		params:{id:'777'},
-		query:{name:'Leon', age:85, email:'leon@abc.com'}
-		}">Docs Id
-	</RouterLink>
-	<button @click="$router.push({name:'home'})">Home</button>
-	<button @click="$router.push({name:'about'})">About</button>
+
+	<button @click="logIn" v-if="!isLoggedIn">Log In</button>
+	<button @click="logOut" v-else>Log Out</button>
 	<RouterView/>
 </template>
 
 <script>
 
 export default {
+	computed: {
+		isLoggedIn() {
+			return this.$store.state.user.isLoggedIn
+		}
+	},
+	created() {
+		this.$store.dispatch("user/initialize")
+	},
+	methods:{
+		logIn() {
+			this.$router.push("/login")
+		},
 
+		logOut() {
+			this.$store.dispatch("user/logOut")
+		}
+	}
 }
 </script>

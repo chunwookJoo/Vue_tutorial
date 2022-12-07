@@ -1,13 +1,9 @@
 import { createStore } from 'vuex'
-import message from "./message"
-import count from "./count"
+import user from "./user"
 
 export default createStore({
-	state() {
-		return {
-			msg:"HI Vue",
-			count:1
-		}
+	modules:{
+		user
 	},
 	getters:{
 		reversedMsg(state) {
@@ -30,8 +26,5 @@ export default createStore({
 		// 	commit("updateMsg", todo.title)
 		// }
 	},
-	modules:{
-		message,
-		count
-	}
+	
 })
