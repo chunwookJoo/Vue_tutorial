@@ -1,64 +1,29 @@
 <template>
-  <h1>설문조사</h1>
-  <!-- <TextFieldVue
-    v-model="fields[0].value"
-    :title="fields[0].title" />
-
-  <SimpleRadio
-    v-model="fields[1].value"
-    :title="fields[1].title"
-    :items="fields[1].items" /> -->
-
-  <component
-    :is="field.component"
-    v-for="field in fields"
-    :key="'component-'+field.title"
-    v-model="field.value"
-    :title="field.title"
-    :items="field.items" />
-
-  <h1>결과</h1>
-  <div
-    v-for="field in fields"
-    :key="'result-'+field.title">
-    {{ field.value }}
+  <div style="transform:scale(1)">
+    <Modal
+      v-model="isShow"
+      closeable>
+      <template #activator>
+        <button>on modal</button>
+      </template>
+      <h3>App.vue</h3>
+    </Modal>
+    <Hello />
   </div>
-  <button @click="submit">
-    제출!
-  </button>
 </template>
 
 <script>
-// import Hello from "~/components/Hello"
-// import sampleMixin from "~/mixins/sample"
-// import TextField from '~/components/fields/TextField'
-// import SimpleRadio from '~/components/fields/SimpleRadio'
 import * as FieldComponents from "~/components/fields/index.js"
-import Modal from "~/components/Modal"
+import Hello from "~/components/Hello"
 
 export default {
 	components:{
-		// Hello,
-		// TextField,
-		// SimpleRadio
+		Hello,
 		...FieldComponents,
-		Modal
 	},
   data() {
     return {
-			fields:[
-				{
-					component:"TextField",
-					title:"이름",
-					value:""
-				},
-				{
-					component:"SimpleRadio",
-					title:"나이대",
-					value:"",
-					items:["20대", "30대", "40대", "50대"]
-				}
-			]
+			isShow:false
     }
   },
 	created() {
