@@ -1,27 +1,32 @@
 <template>
-  <h1 @click="msg += '!!'">
-    {{ msg }}
-  </h1>
-  <Parent />
+  <Hello />
+  <World />
+	<button @click="fetchTodo">Update Msg</button>
+	<h1>store : {{storeMsg}}</h1>
+	<h1>store module : {{storeMessage}}</h1>
 </template>
 
 <script>
-import Parent from "~/components/Parent"
-import { computed } from "vue"
+import Hello from "~/components/Hello"
+import World from "~/components/World"
 
 export default {
 	components:{
-		Parent,
+		Hello,
+		World
 	},
-	provide() {
-		return {
-			msg: computed(() => this.msg)
+	computed: {
+		storeMsg() {
+			return this.$store.state.msg
+		},
+		storeMessage() {
+			return this.$store.state.message.message
 		}
 	},
-	data() {
-		return {
-			msg:"Hello vue"
+	methods: {
+		fetchTodo() {
+			this.$store.dispatch("fetchTodo")
 		}
-	},
+	}
 }
 </script>
