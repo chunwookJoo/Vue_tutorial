@@ -1,32 +1,20 @@
 <template>
-  <Hello />
-  <World />
-	<button @click="fetchTodo">Update Msg</button>
-	<h1>store : {{storeMsg}}</h1>
-	<h1>store module : {{storeMessage}}</h1>
+	<RouterLink to="/">Home</RouterLink>
+	<RouterLink to="/about">About</RouterLink>
+	<RouterLink :to="{
+		name:'docsId',
+		params:{id:'777'},
+		query:{name:'Leon', age:85, email:'leon@abc.com'}
+		}">Docs Id
+	</RouterLink>
+	<button @click="$router.push({name:'home'})">Home</button>
+	<button @click="$router.push({name:'about'})">About</button>
+	<RouterView/>
 </template>
 
 <script>
-import Hello from "~/components/Hello"
-import World from "~/components/World"
 
 export default {
-	components:{
-		Hello,
-		World
-	},
-	computed: {
-		storeMsg() {
-			return this.$store.state.msg
-		},
-		storeMessage() {
-			return this.$store.state.message.message
-		}
-	},
-	methods: {
-		fetchTodo() {
-			this.$store.dispatch("fetchTodo")
-		}
-	}
+
 }
 </script>
