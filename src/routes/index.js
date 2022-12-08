@@ -7,6 +7,13 @@ import LogIn from "./LogIn"
 export default createRouter({
 	// history: createWebHashHistory(),
 	history: createWebHistory(),
+	scrollBehavior() {
+		return {
+			el:"#five",
+			top: 100,
+			behavior:'smooth'
+		}
+	},
 	routes: [
 		{
 			path: "/",

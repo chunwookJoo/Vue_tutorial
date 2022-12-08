@@ -1,14 +1,35 @@
 <template>
-	<RouterLink to="/">Home</RouterLink>
-	<RouterLink to="/about">About</RouterLink>
-
-	<button @click="logIn" v-if="!isLoggedIn">Log In</button>
-	<button @click="logOut" v-else>Log Out</button>
-	<RouterView/>
+	<header>
+		<RouterLink to="/">Home</RouterLink>
+		<RouterLink to="/about">About</RouterLink>
+		<button @click="logIn" v-if="!isLoggedIn">Log In</button>
+		<button @click="logOut" v-else>Log Out</button>
+	</header>
+	<section>
+		<RouterView />
+	</section>
 </template>
 
-<script>
+<style lang="scss" scoped>
+	header {
+		background-color: white;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 80px;
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
 
+	section {
+		margin-top: 80px;
+		background-color: black;
+	}
+</style>
+
+<script>
 export default {
 	computed: {
 		isLoggedIn() {
